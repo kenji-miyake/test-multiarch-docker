@@ -19,9 +19,9 @@ jobs:
       - name: Build
         uses: ./.github/actions/docker-build-and-push
         with:
-          bake-target: test
+          bake-target: test2
           platforms: linux/amd64
-          tag-suffix: ""
+          tag-suffix: -amd64
 
   docker-build-and-push-arm64:
     runs-on: ubuntu-latest
@@ -32,19 +32,6 @@ jobs:
       - name: Build
         uses: ./.github/actions/docker-build-and-push
         with:
-          bake-target: test
+          bake-target: test2
           platforms: linux/arm64
-          tag-suffix: ""
-
-  docker-build-and-push-both:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Build
-        uses: ./.github/actions/docker-build-and-push
-        with:
-          bake-target: test
-          platforms: linux/amd64,linux/arm64
-          tag-suffix: "-both"
+          tag-suffix: -arm64
